@@ -41,29 +41,29 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	const float dt = 1.0f / 60.0f;
-	if( wnd.kbd.KeyIsPressed('Q') )
+	if( wnd.kbd.KeyIsPressed( 'Q' ) )
 	{
-		theta_x = wrap_angle(theta_x + dTheta * dt);
+		theta_x = wrap_angle( theta_x + dTheta * dt );
 	}
-	if( wnd.kbd.KeyIsPressed('W') )
+	if( wnd.kbd.KeyIsPressed( 'W' ) )
 	{
-		theta_y = wrap_angle(theta_y + dTheta * dt);
+		theta_y = wrap_angle( theta_y + dTheta * dt );
 	}
-	if( wnd.kbd.KeyIsPressed('E') )
+	if( wnd.kbd.KeyIsPressed( 'E' ) )
 	{
-		theta_z = wrap_angle(theta_z + dTheta * dt);
+		theta_z = wrap_angle( theta_z + dTheta * dt );
 	}
-	if( wnd.kbd.KeyIsPressed('A') )
+	if( wnd.kbd.KeyIsPressed( 'A' ) )
 	{
-		theta_x = wrap_angle(theta_x - dTheta * dt);
+		theta_x = wrap_angle( theta_x - dTheta * dt );
 	}
-	if( wnd.kbd.KeyIsPressed('S') )
+	if( wnd.kbd.KeyIsPressed( 'S' ) )
 	{
-		theta_y = wrap_angle(theta_y - dTheta * dt);
+		theta_y = wrap_angle( theta_y - dTheta * dt );
 	}
-	if( wnd.kbd.KeyIsPressed('D') )
+	if( wnd.kbd.KeyIsPressed( 'D' ) )
 	{
-		theta_z = wrap_angle(theta_z - dTheta * dt);
+		theta_z = wrap_angle( theta_z - dTheta * dt );
 	}
 	if( wnd.kbd.KeyIsPressed( 'R' ) )
 	{
@@ -85,13 +85,8 @@ void Game::ComposeFrame()
 	for( auto& v : lines.vertices )
 	{
 		v *= rot;
-<<<<<<< HEAD
-		v += { 0.0f, 0.0f, 1.0f };
-		pst.Transform(v);
-=======
 		v += { 0.0f,0.0f,offset_z };
 		pst.Transform( v );
->>>>>>> origin/t4-persp
 	}
 	for( auto i = lines.indices.cbegin(),
 		end = lines.indices.cend();
