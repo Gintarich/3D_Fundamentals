@@ -286,6 +286,27 @@ void Graphics::BeginFrame()
 	sysBuffer.Clear( Colors::Red );
 }
 
+void Graphics::DrawTriangle(const Vec2& v0, const Vec2& v1, const Vec2& v2, Color c)
+{
+	const Vec2* pv0 = &v0;
+	const Vec2* pv1 = &v1;
+	const Vec2* pv2 = &v2;
+	if( pv1->y < pv0->y ) std::swap(pv0, pv1);
+	if( pv2->y < pv1->y ) std::swap(pv0, pv1);
+	if( pv1->y < pv0->y ) std::swap(pv0, pv1);
+	if( pv0->y < pv1->y )
+	{
+		if( pv1->x < pv0->x ) std::swap(pv0, pv1);
+		DrawFlatTopTriangle(*pv0,*pv1, *pv2, c);
+	}
+	else if( pv1->y == pv2->y )
+	{
+		if( pv2->x < pv1->x ) std::swap(pv1, pv2);
+		DrawFlatBottomTriangle(*pv0, *pv1, *pv2, c);
+	}
+
+}
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception
